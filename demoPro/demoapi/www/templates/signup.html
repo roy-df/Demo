@@ -1,0 +1,47 @@
+<ion-view view-title="Sign Up" padding="'true'" scroll="false" class="has-header" >
+    <ion-content >
+                <div style="padding: 10%;">
+                    
+                    <div class="list list-inset">
+                     <label class="item item-input">
+                       <input type="email" placeholder="Enter email">
+                    </label>
+                    <label class="item item-input">
+                         <input type="text" placeholder=" Enter User Name">
+                    </label>
+
+                       <label class="item item-input">
+                         <input type="Password" placeholder=" Enter Password">
+                    </label>
+                      
+                        <label class="item item-input">
+                         <input type="Password" placeholder=" Enter Confirm Password">
+                    </label>
+
+                    </div>  
+                    <div style="text-align: center;">
+                          <button class="button button-block " style="background-color:  #DC7633;" ui-sref="app.loginpage">
+                             SIGN UP
+                     </button>
+                      
+                    </div>
+                 
+
+                     <div style="margin-top:%; text-align: center;"><h3>Or sign with </h3></div>
+                     <div  style="margin-top:5%;" >
+                  <div class="button-bar">
+
+                    <button style="background-color:#3B5998; color:white;" class="button icon-left ion-social-facebook " ng-click="facebookLogin()">
+                       
+                    </button>
+                    <button class="button icon-left ion-social-googleplus button-assertive" ng-click="googleLogin()">
+                      
+                    </button>
+                    <button class="button icon-left ion-social-twitter button-calm" ng-click="googleLogin()">
+                      
+                    </button>
+                </div>
+                <div>
+                </div>
+    </ion-content>
+</ion-view>

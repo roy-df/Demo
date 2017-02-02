@@ -1,0 +1,69 @@
+<ion-view view-title="Login" padding="'true'" scroll="false" class="has-header" >
+    <ion-content >
+            <div style="padding: 10%;">
+                <form name="loginfrm" novalidate data-ng-submit="loginfrm.$valid && login(user,loginfrm.$valid)"> 
+                
+                 <div class="list list-inset">
+                     <label class="item item-input">
+                       <input type="email" placeholder="Enter email" highlight-color="balanced" ng-model="user.email" type="email" name="username" ng-pattern='/^(([^ </>()[\]\.,;:\s@\"]+(\.[^ <> ()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^ <> ()[\]\.,;:\s@\"]{2,})$/i' required>
+                        
+                    </label>
+                    <span>
+                    <div data-ng-messages="loginfrm.$submitted && loginfrm.username.$error" role="alert" class="assertive errmsg">
+                        <div data-ng-message="required">
+                             Enter  email address
+                        </div>
+                        <div data-ng-message="email || pattern">
+                            Enter Valid email
+                        </div>
+                    </div>
+                </span>
+                    <label class="item item-input">
+                         <input type="Password" placeholder="Password" highlight-color="energized" ng-model="user.password" name="password" required>
+                         
+                    </label>
+                        <span>
+                    <div data-ng-messages="loginfrm.$submitted && loginfrm.password.$error" role="alert" class="assertive errmsg">
+                        <div data-ng-message="required">
+                            Enter password
+                        </div>
+                    </div>
+                </span>
+                 </div>
+
+                    <div style="text-align: center;">
+                          <button class="button button-block" style="background-color:  #DC7633;">
+                             Login
+                     </button>
+                    </div>
+                    </form>
+
+                        <div style="text-align: center; color:red;"><h6 style="color:green;">Forget password</h6>
+                         </div>
+
+                         <div style="text-align: center; color:red;" ui-sref="app.signup"><h4 style="color:#CD5C5C;">Sign Up</h4></div>
+            </div>
+
+                     
+                 
+
+                     <div style="margin-top:%; text-align: center;"><h3>Or sign with </h3></div>
+                     
+                     <div  style="margin-top:5%; padding:10%">
+
+                     <div class="button-bar">
+
+                    <button style="background-color:#3B5998; color:white;" class="button icon-left ion-social-facebook " ng-click="facebookLogin()">
+                    
+                    </button>
+                    <button class="button icon-left ion-social-googleplus button-assertive" ng-click="googleLogin()">
+                       
+                    </button>
+                    <button class="button icon-left ion-social-twitter button-calm" ng-click="googleLogin()">
+                      
+                    </button>
+                </div>
+                <div>
+                </div>
+    </ion-content>
+</ion-view>
