@@ -75,3 +75,53 @@ exports.login = function(req,res){
       }
   });
 }*/
+
+exports.FacebookLogin = function(req, res) {
+    console.log(req.body);
+    user.findOne({
+        email: req.body.email
+    }, function(err, doc) {
+        if (err) {
+            var resdata = {
+                record: '',
+                status: 0,
+                message: 'Something Went Wrong.'
+            };
+            res.jsonp(resdata);
+        } else {
+            if (doc != null) {
+                var resdata = {
+                    record: doc,
+                    status: 1,
+                    message: 'Done1.'
+                };
+                res.jsonp(resdata);
+            } else {
+                user.insert({
+                    'email': req.body.email,
+                    'firstname': req.body.first_name,
+                    'lastname': req.body.last_name,
+                    'FBID' : req.body.id,
+                    'profile_image' : req.body.picture.data.url,
+                    'gender' : req.body.gender
+                }, function(err, result) {
+                    if (err) {
+                        var resdata = {
+                            record: '',
+                            status: 0,
+                            message: 'Something Went Wrong.'
+                        };
+                        res.jsonp(resdata);
+                    } else {
+                        var resdata = {
+                            record: result,
+                            status: 1,
+                            message: 'Done'
+                        };
+                        res.jsonp(resdata);
+                    }
+                });
+            }
+        }                
+    })
+}

@@ -52,5 +52,43 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+.controller('LoginCtrl',['$scope', '$rootScope', '$http', '$state', '$stateParams', '$cordovaOauth',  function($scope, $rootScope, $http, $state, $stateParams,$cordovaOauth)  {
+
+   $scope.facebookLogin = function() {
+        $cordovaOauth.facebook("227183420967954", ["email"]).then(function(result) {
+            $http.get("https://graph.facebook.com/v2.2/me", {
+                params: {
+                    access_token: result.access_token,
+                    fields: "name,gender,location,picture.type(large),email,first_name,last_name,verified",
+                    format: "json"
+                }
+            }).then(function(userdata) {
+                $http.post(baseURL + 'FacebookLogin', userdata.data).success(function(res, req) {
+                    if (res.status == 1) {
+                        var user = res.record;
+                        userdata = {
+                            user_login: true,
+                            user_id: user._id,
+                            user_email: user.email,
+                            firstname: user.firstname,
+                            lastname: user.lastname,
+                            profileimage : user.profile_image
+                        }
+                        store.set('userdata', userdata);
+                        $rootScope.islogin = store.get('userdata');
+                        $state.go('app.browse');
+                    } else {
+                    $scope.errMsgLogin = res.message;
+                    }
+                }).error(function(err) {
+                    console.log('Internet Connection Is Not Available.');
+                })
+            }, function(error) {
+                alert("Error: " + error);
+            });
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
+}]);

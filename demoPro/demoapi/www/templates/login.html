@@ -1,25 +1,27 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
-      </div>
-    </form>
-  </ion-content>
-</ion-modal-view>
+<ion-view view-title="Login" padding="'true'" class="has-header" hide-nav-bar="true">
+    <ion-content class="loginContent" scroll="false" >
+                 <div style="margin-top:20%; text-align:center;" >
+                     <h4>Org Name</h4>
+                     <div class="app-icon"><img src="img/ionic.png" style="height:60px;width: 60px"></div>
+                 </div>
+
+                <div style="padding:10%;" >
+                <div style="text-align: center; margin-top:20%;">
+                 <button  class="button button-block" style="background-color:   #DC7633  ;" ui-sref="app.loginpage">
+                     Sign In
+                </button>
+                </div> 
+                <div style="text-align: center; margin-top:5%;">
+                     <h4 style="color: blue;">OR</h4>
+                </div>
+                    
+                <div style="text-align: center;margin-top:10%;">
+                    <button  class="button button-block " style="background-color: #27AE60;" ui-sref="app.signup">
+                     Sign Up
+                </button>
+                </div>  
+                </div>
+                <div>
+               
+    </ion-content>
+</ion-view>
